@@ -1,0 +1,6 @@
+- house.gov zip code -> rep
+- scrape senate.gov for senators -> csv or sql (or csv -> sql)
+- find literally anything relevant from the 2023 mayoral election spreadsheet
+- voter participation in each election nationwide
+  - make pretty graphs (who doesn't love graphs)
+  - matplotlib
