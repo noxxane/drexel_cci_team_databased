@@ -1,5 +1,24 @@
 html {
   height: 100%;
   width: 100%;
-  font-family: 'Roboto', sans-serif;
+}
+
+h1 {
+  font-family: serif;
+  font-style: italic;
+}
+h2 {
+  font-family: serif;
+  font-style: italic;
+}
+
+.subtitle {
+  font-family: serif;
+  font-style: italic;
+}
+
+a {
+  font-family: serif;
+  font-style: italic;
+  text-decoration: none;
 }

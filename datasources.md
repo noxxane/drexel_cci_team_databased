@@ -1,6 +1,8 @@
-# Elected Official Information
+# Current Elected Official Information
 - house.gov zip code -> rep
 - scrape senate.gov for senators -> csv or sql (or csv -> sql)
+# Candidate Information
+- 2023 mayoral election as sample??
 # Election Data
 - find literally anything relevant from the 2023 mayoral election spreadsheet
 - voter participation in each election nationwide
