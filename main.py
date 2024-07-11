@@ -74,8 +74,8 @@ def zip_codes_to_dict():
     # include the 'area name' and 'physical zip' columns, the only two that
     # we actually need
     df[["AREA NAME", "DISTRICT NAME", "PHYSICAL ZIP"]]
-    filtered_df = filter_for_area_name_zips(df, "ATLANTIC")
-    filtered_df = filter_for_district_name_zips(df, "DE-PA 2")
+    # filtered_df = filter_for_area_name_zips(df, "ATLANTIC")
+    # filtered_df = filter_for_district_name_zips(df, "DE-PA 2")
     filtered_df = filter_for_city(df, "PHILADELPHIA")
     filtered_zips = fix_no_leading_zero_zips(
         list(map(lambda x: str(int(x)), filtered_df["PHYSICAL ZIP"].tolist()))
