@@ -48,4 +48,4 @@ The only feature currently fully implemented is a scraper for the house.gov zip 
 - [Emerging Adult Civic and Political Disengagement: A Longitudinal Analysis of Lack of Involvement with Politics](https://youthandreligion.nd.edu/assets/124526/psnell_emerging_adult_civic_disengagement.pdf)
 - [Some Elements of an Interactionist Approach to Political Disengagement](https://serval.unil.ch/resource/serval:BIB_901FDF515554.P001/REF.pdf)
 - [Political Disengagement Among Youth: A Comparison Between 2011 and 2020](https://www.frontiersin.org/journals/psychology/articles/10.3389/fpsyg.2022.809432/full)
-- [Social Capital and Political Participation:]
+- [Social Capital and Political Participation: Understanding the Dynamics of Young People's Political Disengagement in Contemporary Britain](https://irep.ntu.ac.uk/id/eprint/16280/1/196503_Henn,%20Weinstein%20and%20Hodgkinson%20-%20Social%20Policy%20and%20Society%20PDF.pdf)
