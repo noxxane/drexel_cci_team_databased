@@ -8,7 +8,7 @@ import pandas as pd
 import requests
 
 
-def get_rep_from_zip(user_zip_code: str):
+def get_rep_from_zip(user_zip_code: str) -> tuple[str, str] | str:
     """scrapes the house website for the user's rep"""
     link = f"https://ziplook.house.gov/htbin/findrep_house?ZIP={user_zip_code}"
     text = requests.get(link, timeout=10).text
@@ -21,7 +21,7 @@ def get_rep_from_zip(user_zip_code: str):
         reps = list(filter(lambda x: len(x) != 0, reps))
         rep_1 = ", ".join(reps[:3])
         rep_2 = ", ".join(reps[3:6])
-        return (rep_1, rep_2)
+        return rep_1, rep_2
     user_rep = list(map(lambda x: x.text, rep_div))
     user_rep = list(map(lambda x: x.strip(), user_rep))
     user_rep = ", ".join(list(map(lambda x: x.strip(), "".join(user_rep).splitlines())))
@@ -45,9 +45,9 @@ def fix_no_leading_zero_zip(user_zip_code: str):
 
 
 def fix_no_leading_zero_zips(zip_list):
-    """fixes all of the zips in a given list"""
+    """fixes all the zips in a given list"""
     for x in zip_list:
-        x = fix_no_leading_zero_zip(x)
+        fix_no_leading_zero_zip(x)
     return zip_list
 
 
@@ -70,10 +70,7 @@ def zip_codes_to_dict():
     """caches reps from zip codes"""
     file = "/home/nox/Downloads/zips.csv"
     df = pd.read_csv(file)
-    # pylint seems to take issue with this; this filters the dataframe to only
-    # include the 'area name' and 'physical zip' columns, the only two that
-    # we actually need
-    df[["AREA NAME", "DISTRICT NAME", "PHYSICAL ZIP"]]
+    df = df[["AREA NAME", "DISTRICT NAME", "PHYSICAL ZIP"]]
     # filtered_df = filter_for_area_name_zips(df, "ATLANTIC")
     # filtered_df = filter_for_district_name_zips(df, "DE-PA 2")
     filtered_df = filter_for_city(df, "PHILADELPHIA")
