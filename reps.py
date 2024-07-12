@@ -105,7 +105,6 @@ def cache_zips_as_json(zips_dict):
     print("done writing json")
 
 
-# cache_zip_codes()
 if __name__ == "__main__":
     gen_zips_dict = zip_codes_to_dict()
     cache_zips_as_json(gen_zips_dict)
