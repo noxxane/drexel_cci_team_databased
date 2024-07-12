@@ -1,5 +1,5 @@
 """ program to find rep(s) from zip using the house website. caches them for
-use in the teenformation (temp name) website """
+use in the teenformation (temp name) website. authored by frank furtschool """
 
 import csv
 import json
