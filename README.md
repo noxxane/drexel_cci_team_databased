@@ -31,8 +31,14 @@ The only feature currently fully implemented is a scraper for the house.gov zip 
     - Inspiration
         - [Molly White](https://blog.mollywhite.net)
             - More than anything else (although the font and margins are still definitely inspiration), I think that Molly's footnotes are something that we could definitely use. The way I think about it, a lot of our site is going to be focused on stuff that would definitely be cited in a universe which makes sense, and footnotes are better than any other style of citation in my opinion.
+            - In terms of typography, White's website uses Georgia and Times New Roman as first-choice fonts.
+            - I think that her website excels the most at long-form writing, which as I imagine it is what most of our website will be constitued of. A serif font, I feel, especially suits writing of this type.
+        - White's articles are the thing I think the most inspiration could be drawed from; they not only constitute the majority of the website's content but are also the --- in my opinion --- best designed part of the site. All of her articles extensively use hyperlinks to relevant Wikipedia articles, footnotes, hyperlinks to relevant websites, and citations. All of these ensure reader understanding and comprehension and also serve to allow interested readers to learn more about the topic and cross-reference the website's writing. Users can not only reach the footnotes and references from the article's text but can also return to the place they came from in coming to the footnote or referene.
         - [Gwern](https://gwern.net)
             - Couldn't so much as imagine implementing all the stuff that Gwern has, especially the Wikipedia-like popouts. I do think his typography and the way that his articles are formatted are nice though. They're basically shown like a journal article just in a webpage, which I think is pretty good. Also footnotes.
+        - [Economist](https://economist.com)
+            - [Economist Design System](https://design-system.economist.com)
+            - Text Color: #0D0D0D
 
 ## Further Information
 ### Published Research on Voting
