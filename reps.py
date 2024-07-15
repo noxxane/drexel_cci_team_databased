@@ -3,6 +3,7 @@ use in the teenformation (temp name) website. authored by frank furtschool """
 
 import json
 import sys
+import pathlib
 from bs4 import BeautifulSoup
 import pandas as pd
 import requests
@@ -12,27 +13,27 @@ ZIP_FILE = "zips_to_reps.json"
 
 def get_rep_from_zip(user_zip_code: str) -> tuple[str, str] | str:
     """scrapes the house website for the user's rep"""
-    link = f"https://ziplook.house.gov/htbin/findrep_house?ZIP={user_zip_code}"
-    text = requests.get(link, timeout=10).text
-    soup = BeautifulSoup(text, "html.parser")
-    rep_div = soup.find_all("div", {"id": "RepInfo"})
+    link: str = f"https://ziplook.house.gov/htbin/findrep_house?ZIP={user_zip_code}"
+    text: str = requests.get(link, timeout=10).text
+    soup: BeautifulSoup = BeautifulSoup(text, "html.parser")
+    rep_div: list[BeautifulSoup] = soup.find_all("div", {"id": "RepInfo"})
     if len(rep_div) == 0:
-        reps = soup.find_all("div", {"class": "RepInfo"})
-        reps = list(map(lambda x: x.text, reps))
-        reps = list(map(lambda x: x.strip(), "".join(reps).splitlines()))
-        reps = list(filter(lambda x: len(x) != 0, reps))
-        rep_1 = ", ".join(reps[:3])
-        rep_2 = ", ".join(reps[3:6])
+        reps: list[BeautifulSoup] = soup.find_all("div", {"class": "RepInfo"})
+        reps_text: list[str] = list(map(lambda x: x.text, reps))
+        reps_text: list[str] = list(map(lambda x: x.strip(), "".join(reps_text).splitlines()))
+        reps_text: list[str] = list(filter(lambda x: len(x) != 0, reps_text))
+        rep_1: str = ", ".join(reps_text[:3])
+        rep_2: str = ", ".join(reps_text[3:6])
         return rep_1, rep_2
-    user_rep = list(map(lambda x: x.text, rep_div))
-    user_rep = list(map(lambda x: x.strip(), user_rep))
-    user_rep = ", ".join(list(map(lambda x: x.strip(), "".join(user_rep).splitlines())))
-    return user_rep
+    user_rep: list[str] = list(map(lambda x: x.text, rep_div))
+    user_rep: list[str] = list(map(lambda x: x.strip(), user_rep))
+    user_rep_string: str = ", ".join(list(map(lambda x: x.strip(), "".join(user_rep).splitlines())))
+    return user_rep_string
 
 
 def print_reps(user_zip_code: str):
     """prints reps from get_rep_from_zip"""
-    rep = get_rep_from_zip(user_zip_code)
+    rep: str | tuple[str, str] = get_rep_from_zip(user_zip_code)
     if rep is tuple:
         print(f"Your representatives are {rep[0]} and {rep[1]}")
     else:
@@ -46,37 +47,24 @@ def fix_no_leading_zero_zip(user_zip_code: str):
     return user_zip_code.rjust(5, "0")
 
 
-def fix_no_leading_zero_zips(zip_list):
+def fix_no_leading_zero_zips(zip_list: list[str]):
     """fixes all the zips in a given list"""
     for x in zip_list:
         fix_no_leading_zero_zip(x)
     return zip_list
 
 
-def filter_for_area_name_zips(zip_df, area_name):
-    """filters for zips with the provided area name"""
-    return zip_df[zip_df["AREA NAME"] == area_name]
-
-
-def filter_for_district_name_zips(zip_df, district_name):
-    """filters for zips with the provided district name"""
-    return zip_df[zip_df["DISTRICT NAME"] == district_name]
-
-
-def filter_for_city(zip_df, physical_city):
-    """filters for zips with the provided city"""
-    return zip_df[zip_df["PHYSICAL CITY"] == physical_city]
+def filter_df(zip_df: pd.DataFrame, filter_column: str, filter_var: str) -> pd.DataFrame:
+    return zip_df[zip_df[filter_column] == filter_var]
 
 
 def zip_codes_to_dict():
     """caches reps from zip codes"""
-    file = "/home/nox/Downloads/zips.csv"
-    df = pd.read_csv(file)
-    df = df[["AREA NAME", "DISTRICT NAME", "PHYSICAL ZIP", "PHYSICAL CITY"]]
-    # filtered_df = filter_for_area_name_zips(df, "ATLANTIC")
-    filtered_df = filter_for_district_name_zips(df, "DE-PA 2")
-    # filtered_df = filter_for_city(df, "PHILADELPHIA")
-    filtered_zips = fix_no_leading_zero_zips(
+    zip_csv_path: pathlib.Path = pathlib.Path("/home/nox/Downloads/zips.csv")
+    df: pd.DataFrame = pd.read_csv(zip_csv_path)
+    df: pd.DataFrame = df[["AREA NAME", "DISTRICT NAME", "PHYSICAL ZIP", "PHYSICAL CITY"]]
+    filtered_df: pd.DataFrame = filter_df(df, "DISTRICT_NAME", "DE-PA 2")
+    filtered_zips: list[str] = fix_no_leading_zero_zips(
         list(map(lambda x: str(int(x)), filtered_df["PHYSICAL ZIP"].tolist()))
     )
     with open(ZIP_FILE, "r", encoding="utf-8") as f:
@@ -99,7 +87,7 @@ def zip_codes_to_dict():
     return zips_dict
 
 
-def cache_zips_as_json(zips_dict):
+def cache_zips_as_json(zips_dict: dict[str, str]):
     """caches zips dict into a json"""
     with open("zips_to_reps.json", "w", encoding="utf-8") as f:
         json.dump(zips_dict, f)
