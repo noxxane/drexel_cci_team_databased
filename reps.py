@@ -1,11 +1,13 @@
 """ program to find rep(s) from zip using the house website. caches them for
 use in the teenformation (temp name) website. authored by frank furtschool """
 
-import csv
 import json
+import sys
 from bs4 import BeautifulSoup
 import pandas as pd
 import requests
+
+ZIP_FILE = "zips_to_reps.json"
 
 
 def get_rep_from_zip(user_zip_code: str) -> tuple[str, str] | str:
@@ -70,13 +72,21 @@ def zip_codes_to_dict():
     """caches reps from zip codes"""
     file = "/home/nox/Downloads/zips.csv"
     df = pd.read_csv(file)
-    df = df[["AREA NAME", "DISTRICT NAME", "PHYSICAL ZIP"]]
+    df = df[["AREA NAME", "DISTRICT NAME", "PHYSICAL ZIP", "PHYSICAL CITY"]]
     # filtered_df = filter_for_area_name_zips(df, "ATLANTIC")
-    # filtered_df = filter_for_district_name_zips(df, "DE-PA 2")
-    filtered_df = filter_for_city(df, "PHILADELPHIA")
+    filtered_df = filter_for_district_name_zips(df, "DE-PA 2")
+    # filtered_df = filter_for_city(df, "PHILADELPHIA")
     filtered_zips = fix_no_leading_zero_zips(
         list(map(lambda x: str(int(x)), filtered_df["PHYSICAL ZIP"].tolist()))
     )
+    with open(ZIP_FILE, "r", encoding="utf-8") as f:
+        existing_zips = json.load(f)
+        existing_keys = existing_zips.keys()
+    filtered_zips = list(filter(lambda x: x not in existing_keys, filtered_zips))
+    if len(filtered_zips) <= len(existing_zips):
+        # hacky asf solution, not entirely sure who designed json, but they should be drawn and
+        # quartered for what they have done to my (formerly) immaculate code
+        sys.exit(0)
     zips_dict = {}
 
     total_zips = len(filtered_zips)
@@ -87,15 +97,6 @@ def zip_codes_to_dict():
         current_zip += 1
     print("done getting reps")
     return zips_dict
-
-
-def cache_zips_as_csv(zips_dict):
-    """caches zips_dict into a csv"""
-    with open("zips_to_reps.csv", "w", encoding="utf-8") as f:
-        w = csv.DictWriter(f, zips_dict.keys())
-        w.writeheader()
-        w.writerow(zips_dict)
-    print("done writing csv")
 
 
 def cache_zips_as_json(zips_dict):
