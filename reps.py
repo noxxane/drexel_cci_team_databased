@@ -2,7 +2,6 @@
 use in the teenformation (temp name) website. authored by frank furtschool """
 
 import json
-import sys
 import pathlib
 from bs4 import BeautifulSoup
 import pandas as pd
@@ -65,17 +64,17 @@ def zip_codes_to_dict():
     df: pd.DataFrame = df[["AREA NAME", "DISTRICT NAME", "PHYSICAL ZIP", "PHYSICAL CITY"]]
     filtered_df: pd.DataFrame = filter_df(df, "DISTRICT NAME", "DE-PA 2")
     filtered_zips: list[str] = fix_no_leading_zero_zips(
-        list(map(lambda x: str(int(x)), filtered_df["PHYSICAL ZIP"].tolist()))
+        list(map(lambda x: str(int(x)), filtered_df["PHYSICAL ZIP"].unique().tolist()))
     )
+    zips_dict = {}
     with open(ZIP_FILE, "r", encoding="utf-8") as f:
         existing_zips = json.load(f)
-        existing_keys = existing_zips.keys()
-    filtered_zips = list(filter(lambda x: x not in existing_keys, filtered_zips))
-    if len(filtered_zips) <= len(existing_zips):
-        # hacky asf solution, not entirely sure who designed json, but they should be drawn and
-        # quartered for what they have done to my (formerly) immaculate code
-        sys.exit(0)
-    zips_dict = {}
+        existing_keys: list[str] = existing_zips.keys()
+    for key_zip in filtered_zips:
+        if key_zip in existing_keys:
+            zips_dict[key_zip] = existing_zips[key_zip]
+            while key_zip in filtered_zips:
+                filtered_zips.remove(key_zip)
 
     total_zips = len(filtered_zips)
     current_zip = 0
