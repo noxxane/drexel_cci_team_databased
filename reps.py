@@ -63,7 +63,7 @@ def zip_codes_to_dict():
     zip_csv_path: pathlib.Path = pathlib.Path("/home/nox/Downloads/zips.csv")
     df: pd.DataFrame = pd.read_csv(zip_csv_path)
     df: pd.DataFrame = df[["AREA NAME", "DISTRICT NAME", "PHYSICAL ZIP", "PHYSICAL CITY"]]
-    filtered_df: pd.DataFrame = filter_df(df, "DISTRICT_NAME", "DE-PA 2")
+    filtered_df: pd.DataFrame = filter_df(df, "DISTRICT NAME", "DE-PA 2")
     filtered_zips: list[str] = fix_no_leading_zero_zips(
         list(map(lambda x: str(int(x)), filtered_df["PHYSICAL ZIP"].tolist()))
     )
