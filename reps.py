@@ -7,7 +7,7 @@ from bs4 import BeautifulSoup
 import pandas as pd
 import requests
 
-ZIP_FILE = "zips_to_reps.json"
+ZIP_FILE = "./stats/zips.csv"
 
 
 def get_rep_from_zip(user_zip_code: str) -> tuple[str, str] | str:
@@ -19,21 +19,25 @@ def get_rep_from_zip(user_zip_code: str) -> tuple[str, str] | str:
     if len(rep_div) == 0:
         reps: list[BeautifulSoup] = soup.find_all("div", {"class": "RepInfo"})
         reps_text: list[str] = list(map(lambda x: x.text, reps))
-        reps_text: list[str] = list(map(lambda x: x.strip(), "".join(reps_text).splitlines()))
+        reps_text: list[str] = list(
+            map(lambda x: x.strip(), "".join(reps_text).splitlines())
+        )
         reps_text: list[str] = list(filter(lambda x: len(x) != 0, reps_text))
         rep_1: str = ", ".join(reps_text[:3])
         rep_2: str = ", ".join(reps_text[3:6])
         return rep_1, rep_2
     user_rep: list[str] = list(map(lambda x: x.text, rep_div))
     user_rep: list[str] = list(map(lambda x: x.strip(), user_rep))
-    user_rep_string: str = ", ".join(list(map(lambda x: x.strip(), "".join(user_rep).splitlines())))
+    user_rep_string: str = ", ".join(
+        list(map(lambda x: x.strip(), "".join(user_rep).splitlines()))
+    )
     return user_rep_string
 
 
 def print_reps(user_zip_code: str):
     """prints reps from get_rep_from_zip"""
-    rep: str | tuple[str, str] = get_rep_from_zip(user_zip_code)
-    if rep is tuple:
+    rep = get_rep_from_zip(user_zip_code)
+    if rep is tuple[str, str]:
         print(f"Your representatives are {rep[0]} and {rep[1]}")
     else:
         print(f"Your representative is {rep}")
@@ -53,15 +57,20 @@ def fix_no_leading_zero_zips(zip_list: list[str]):
     return zip_list
 
 
-def filter_df(zip_df: pd.DataFrame, filter_column: str, filter_var: str) -> pd.DataFrame:
-    return zip_df[zip_df[filter_column] == filter_var]
+def filter_df(
+    zip_df: pd.DataFrame, filter_column: str, filter_var: str
+) -> pd.DataFrame:
+    """filters a df fuck if i know"""
+    return pd.DataFrame(zip_df[zip_df[filter_column] == filter_var])
 
 
 def zip_codes_to_dict():
     """caches reps from zip codes"""
     zip_csv_path: pathlib.Path = pathlib.Path("/home/nox/Downloads/zips.csv")
     df: pd.DataFrame = pd.read_csv(zip_csv_path)
-    df: pd.DataFrame = df[["AREA NAME", "DISTRICT NAME", "PHYSICAL ZIP", "PHYSICAL CITY"]]
+    df: pd.DataFrame = pd.DataFrame(
+        df[["AREA NAME", "DISTRICT NAME", "PHYSICAL ZIP", "PHYSICAL CITY"]]
+    )
     filtered_df: pd.DataFrame = filter_df(df, "DISTRICT NAME", "DE-PA 2")
     filtered_zips: list[str] = fix_no_leading_zero_zips(
         list(map(lambda x: str(int(x)), filtered_df["PHYSICAL ZIP"].unique().tolist()))
