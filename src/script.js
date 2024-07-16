@@ -6,5 +6,5 @@ async function getRep(userZip) {
 
 async function findRep() {
   let userZip = document.getElementById("zip_input").value;
-  alert(await getRep(userZip));
+  alert(await getRep(userZip)); 
 }
