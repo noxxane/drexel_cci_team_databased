@@ -14,5 +14,5 @@ for senator in senators:
         senators_dict[senator["terms"][-1]["state"]] = []
     senators_dict[senator["terms"][-1]["state"]].append(name)
 
-out_file = open("states_to_sens.json", "w")
-json.dump(senators_dict, out_file)
+with open("../states_to_sens.json", "w", encoding="utf-8") as out_file:
+    json.dump(senators_dict, out_file)
