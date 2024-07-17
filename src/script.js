@@ -1,5 +1,5 @@
 async function getRep(userZip) {
-  const response = await fetch("./zips_to_reps.json");
+  const response = await fetch("../zips_to_reps.json");
   const json = await response.json();
   return json[userZip];
 }
