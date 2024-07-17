@@ -49,8 +49,8 @@ def get_margin_of_victory(given_election_year: int):
 
 
 if __name__ == "__main__":
-    # if DAT_FILE_PATH.exists():
-    #     DAT_FILE_PATH.unlink()
+    REDO = False
+
     election_year_list = [1789, 1792]
     while 2020 not in election_year_list:
         election_year_list.append(election_year_list[-1] + 4)
@@ -58,10 +58,13 @@ if __name__ == "__main__":
     # the electors, meaning that he received 0 electoral votes)
     election_year_list.remove(1872)
 
-    for election_year in election_year_list:
-        print("getting mov for", election_year)
+    if REDO is True:
+        if DAT_FILE_PATH.exists():
+            DAT_FILE_PATH.unlink()
+        for election_year in election_year_list:
+            print("getting mov for", election_year)
 
-        get_margin_of_victory(election_year)
+            get_margin_of_victory(election_year)
     year_to_mov_dict = {}
     with open(DAT_FILE_PATH, "r", encoding="utf-8") as f:
         text = f.read()
