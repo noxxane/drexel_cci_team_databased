@@ -24,17 +24,25 @@ def turnout_graph():
     plt.close()
 
 
-def twenty_fifteen_graph():
-    """graph for votes per mp in the 2015 united kingdom general election"""
-    df = pd.read_csv("../stats/2015 United Kingdom general election - Sheet1.csv")
-    vote_list = df["Votes"].tolist()
-    mps_list = df["MPs"].tolist()
+def votes_per_mp(election_df: pd.DataFrame) -> pd.DataFrame:
+    """takes a dataframe with united kingdom general election data and outputs the votes each
+    party got per elected mp"""
+    vote_list = election_df["Votes"].tolist()
+    mps_list = election_df["MPs"].tolist()
     votes_per_mp_list = []
     for vote, mps in zip(vote_list, mps_list):
         votes_per_mp_list.append(vote / mps)
     dfl = pd.DataFrame(
-        {"Party": df["Party"].tolist(), "Votes per MP": votes_per_mp_list}
+        {"Party": election_df["Party"].tolist(), "Votes per MP": votes_per_mp_list}
     )
+
+    return dfl
+
+
+def twenty_fifteen_graph():
+    """graph for votes per mp in the 2015 united kingdom general election"""
+    df = pd.read_csv("../stats/2015 United Kingdom general election - Sheet1.csv")
+    dfl = votes_per_mp(df)
 
     sns.set_theme()
 
@@ -49,14 +57,7 @@ def twenty_fifteen_graph():
 def twenty_twenty_four_graph():
     """graph for votes per mp in the 2024 united kingdom general election"""
     df = pd.read_csv("../stats/2024 United Kingdom general election - Sheet1.csv")
-    vote_list = df["Votes"].tolist()
-    mps_list = df["MPs"].tolist()
-    votes_per_mp_list = []
-    for vote, mps in zip(vote_list, mps_list):
-        votes_per_mp_list.append(vote / mps)
-    dfl = pd.DataFrame(
-        {"Party": df["Party"].tolist(), "Votes per MP": votes_per_mp_list}
-    )
+    dfl = votes_per_mp(df)
 
     sns.set_theme()
 
