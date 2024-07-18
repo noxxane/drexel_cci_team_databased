@@ -12,7 +12,13 @@ h1 {
   font-family: serif;
   font-style: italic;
 }
+
 h2 {
+  font-family: serif;
+  font-style: italic;
+}
+
+h4 {
   font-family: serif;
   font-style: italic;
 }
@@ -47,3 +53,5 @@ li a {
   padding: 5px 5px;
   text-decoration: none;
 }
+
+
