@@ -12,10 +12,13 @@ async function getSen(userSen){
 
 async function findRep() {
   let userZip = document.getElementById("zip_input").value;
-  alert(await getRep(userZip)); 
+  document.getElementById("rep_output").innerHTML = await getRep(userZip);
+  
+  // alert(await getRep(userZip)); 
 }
 
 async function findSen() {
   let userState = document.getElementById("state_input").value;
-  alert(await getSen(userState));
+  document.getElementById("sen_output").innerHTML = await getSen(userState);
+  // alert(await getSen(userState));
   }
