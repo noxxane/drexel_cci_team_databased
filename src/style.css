@@ -21,6 +21,7 @@ html {
 
 body {
   margin: 1in;
+  
 }
 
 .prose {
@@ -74,6 +75,11 @@ li.navbar_item a {
   text-decoration: none;
 }
 
+li.navbar_item a:hover{
+  color: #FDC116;
+  text-decoration: underline;
+}
+
 footer {
   margin: 0;
   padding: 0;
@@ -89,9 +95,5 @@ body.find_your_leg_screen {
 
 body.home_screen{
   height:190%;
-  width: auto;
-}
-body.ways_to_engage_screen {
-  height: 150%;
   width: auto;
 }
