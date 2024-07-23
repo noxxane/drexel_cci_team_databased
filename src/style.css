@@ -23,6 +23,7 @@ html {
 
 body {
   margin: 1in;
+  
 }
 
 h1 {
@@ -59,6 +60,7 @@ ul.navbar {
   overflow: hidden;
   background-color:#522449;
   text-align: center;
+  text-decoration: underline;
 }
 
 li.navbar_item {
@@ -87,3 +89,14 @@ footer {
   background-color:#522449;
   position: fixed;
 }
+
+body.find_your_leg_screen {
+  height: 100%;
+  width: auto;
+}
+
+body.home_screen{
+  height:190%;
+  width: auto;
+}
+body.ways_to_engage_screen 
