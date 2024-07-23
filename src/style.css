@@ -60,7 +60,6 @@ ul.navbar {
   overflow: hidden;
   background-color:#522449;
   text-align: center;
-  text-decoration: underline;
 }
 
 li.navbar_item {
@@ -99,4 +98,8 @@ body.home_screen{
   height:190%;
   width: auto;
 }
-body.ways_to_engage_screen 
+
+body.ways_to_engage_screen {
+  height: 150%;
+  width: auto;
+}
