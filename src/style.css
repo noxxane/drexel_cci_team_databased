@@ -1,85 +1,105 @@
 html {
-    height: 100%;
-    width: 100%;
-}
-
-.title-span {
-    font-family: "Libre Caslon Text", serif;
-    font-size: 2em;
-    font-style: italic;
-    font-weight: bold;
-    margin-bottom: 0.67em;
-    margin-left: 0;
-    margin-right: 0;
-    margin-top: 0.67em;
-}
-
-#logo {
-    width: 7%;
-    height: 0.3%;
-}
-
-body {
-    font-family: "Libre Caslon Text", serif;
-    font-weight: 400;
-    margin-left: 15%;
-    margin-right: 15%;
+  height: 100%;
+  width: 100%;
 }
 
 .prose {
-    text-indent: 0.5in;
+  font-family: "Libre Caslon Text", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.prose-italic {
+  font-family: "Libre Caslon Text", serif;
+  font-weight: 400;
+  font-style: italic;
+}
+
+
+#logo {
+  width: 7%;
+  height: 0.3%;
+}
+
+body {
+  margin: 1in;
+  
 }
 
 h1 {
-    font-style: italic;
-    font-weight: bold;
+  font-style: italic;
+  font-weight: bold;
 }
 
 h2 {
-    font-style: italic;
+  font-style: italic;
 }
 
 hr {
-    color: lightgray;
+  color: lightgray;
 }
 
 h4 {
-    color: #522449;
+color: #522449; 
+}
+
+.zipcode {
+  font-style: italic;
+  margin-left: 25px;
 }
 
 a {
-    font-style: italic;
-    text-decoration: none;
+  font-style: italic;
+  text-decoration: none;
 }
 
 ul.navbar {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    background-color: #522449;
-    text-align: center;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color:#522449;
+  text-align: center;
+  text-decoration: underline;
 }
 
 li.navbar_item {
-    float: left;
+  float: left;
 }
 
 li.navbar_item a {
-    color: white;
-    display: block;
-    font-family: "Libre Caslon Text", serif;
-    font-style: normal;
-    font-weight: 400;
-    padding: 5px 5px;
-    text-align: center;
-    text-decoration: none;
+  color: white;
+  display: block;
+  font-family: "Libre Caslon Text", serif;
+  font-style: normal;
+  font-weight: 400;
+  padding: 5px 5px;
+  text-align: center;
+  text-decoration: none;
+}
+
+div {
+  margin-left: 23px;
 }
 
 footer {
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    background-color: #522449;
-    position: fixed;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color:#522449;
+  position: fixed;
+}
+
+body.find_your_leg_screen {
+  height: 100%;
+  width: auto;
+}
+
+body.home_screen{
+  height:190%;
+  width: auto;
+}
+body.ways_to_engage_screen {
+  height: 150%;
+  width: auto;
 }
