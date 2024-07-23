@@ -22,7 +22,8 @@ html {
 body {
     font-family: "Libre Caslon Text", serif;
     font-weight: 400;
-    margin: 0.15%;
+    margin-left: 15%;
+    margin-right: 15%;
 }
 
 .prose {
