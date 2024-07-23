@@ -15,6 +15,9 @@ html {
   font-style: italic;
 }
 
+.zipcode{
+  font-size: 20px;
+}
 
 #logo {
   width: 7%;
@@ -77,6 +80,11 @@ li.navbar_item a {
   text-decoration: none;
 }
 
+li.navbar_item a:hover{
+  color: #FDC116;
+  text-decoration: underline;
+}
+
 div {
   margin-left: 23px;
 }
@@ -100,6 +108,11 @@ body.home_screen{
 }
 
 body.ways_to_engage_screen {
+  height: 150%;
+  width: auto;
+}
+
+body.stats_screen {
   height: 150%;
   width: auto;
 }
