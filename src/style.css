@@ -75,7 +75,13 @@ li.navbar_item a {
   text-decoration: none;
 }
 
+
 li.navbar_item a:hover{
+  color: #FDC116;
+  text-decoration: underline;
+}
+
+.info:hover{
   color: #FDC116;
   text-decoration: underline;
 }
