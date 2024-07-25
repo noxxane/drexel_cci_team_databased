@@ -1,6 +1,10 @@
 html {
-  height: 100%;
-  width: 100%;
+    height: 100%;
+    width: 100%;
+}
+
+sup {
+    font-style: normal;
 }
 
 .title-span {
@@ -15,13 +19,12 @@ html {
 }
 
 #logo {
-  width: 7%;
-  height: 0.3%;
+    width: 7%;
+    height: 0.3%;
 }
 
 body {
-  margin: 1in;
-  
+    margin: 1in;
 }
 
 .prose {
@@ -29,77 +32,73 @@ body {
 }
 
 h1 {
-  font-style: italic;
-  font-weight: bold;
+    font-style: italic;
+    font-weight: bold;
 }
 
 h2 {
-  font-style: italic;
+    font-style: italic;
 }
 
 hr {
-  color: lightgray;
+    color: lightgray;
 }
 
 h4 {
-color: #522449; 
+    color: #522449;
 }
 
 a {
-  font-style: italic;
-  text-decoration: none;
+    font-style: italic;
+    text-decoration: none;
 }
 
 ul.navbar {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
-  background-color:#522449;
-  text-align: center;
-  text-decoration: underline;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #522449;
+    text-align: center;
+    text-decoration: underline;
 }
 
 li.navbar_item {
-  float: left;
-  margin: 0;
-  padding: 0;
+    float: left;
+    margin: 0;
+    padding: 0;
 }
-
 
 li.navbar_item a {
-  color: white;
-  display: block;
-  font-family: "Libre Caslon Text", serif;
-  font-style: normal;
-  font-weight: 400;
-  padding: 5px 5px;
-  text-align: center;
-  text-decoration: none;
+    color: white;
+    display: block;
+    font-family: "Libre Caslon Text", serif;
+    font-style: normal;
+    font-weight: 400;
+    padding: 5px 5px;
+    text-align: center;
+    text-decoration: none;
 }
 
-
-li.navbar_item a:hover{
-  color: #FDC116;
-  text-decoration: underline;
+li.navbar_item a:hover {
+    color: #fdc116;
+    text-decoration: underline;
 }
 
-.info:hover{
-  color: #FDC116;
-  text-decoration: underline;
+.info:hover {
+    color: #fdc116;
+    text-decoration: underline;
 }
 
 footer {
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
-  background-color:#522449;
-  position: fixed;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #522449;
+    position: fixed;
 }
 
-
-
-body.home_screen{
-  height:190%;
-  width: auto;
+body.home_screen {
+    height: 190%;
+    width: auto;
 }
