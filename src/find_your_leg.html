@@ -1,13 +1,15 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
     <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&display=swap"
-              rel="stylesheet">
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&display=swap"
+            rel="stylesheet"
+        />
         <link href="style.css" rel="stylesheet" type="text/css" />
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width">
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width" />
         <script src="script.js"></script>
         <title>Teenformation - Encouraging Youth Political Engagement</title>
     </head>
@@ -15,29 +17,53 @@
         <header>
             <center>
                 <span class="title-span prose-italic">Teenformation</span>
-                <img id="logo" src="../teenformation.png"/>
+                <img id="logo" src="../teenformation.png" />
                 <p class="subtitle">Encouraging Youth Political Engagement</p>
             </center>
-            <hr>
+            <hr />
             <div id="navbar_frame">
                 <ul class="navbar">
-                    <li class="navbar_item"> <a href="index.html">Home</a></li>
-                    <li class="navbar_item"><a href="find_your_leg.html">Find Your Legislator</a></li>
-                    <li class="navbar_item"> <a href="ways_to_engage.html">Ways to Engage</a></li>
-                    <li class="navbar_item"> <a href="learn_about_government.html">Learn About Government</a></li>
-                    <li class="navbar_item"> <a href="stats.html">Stats</a></li>
+                    <li class="navbar_item"><a href="index.html">Home</a></li>
+                    <li class="navbar_item">
+                        <a href="find_your_leg.html">Find Your Legislator</a>
+                    </li>
+                    <li class="navbar_item">
+                        <a href="ways_to_engage.html">Ways to Engage</a>
+                    </li>
+                    <li class="navbar_item">
+                        <a href="learn_about_government.html"
+                            >Learn About Government</a
+                        >
+                    </li>
+                    <li class="navbar_item"><a href="stats.html">Stats</a></li>
                 </ul>
             </div>
         </header>
         <h1>Find Your Legislator</h1>
-        <p>Enter your zipcode to see your Representative or Representatives to the House, along with their parties.</p>
-        <p>Please note that right now, only zip codes from the Philadelphia area are in our database.</p>
-        <input id="zip_input" placeholder="Enter Zip Code (ex. 18017)" type="number"></input>
+        <p>
+            Enter your zipcode to see your Representative or Representatives to
+            the House, along with their parties.
+        </p>
+        <p>
+            Please note that right now, only zip codes from the Philadelphia
+            area are in our database.
+        </p>
+        <input
+            id="zip_input"
+            placeholder="Enter Zip Code (ex. 18017)"
+            type="number"
+        />
         <button id="find_rep" onclick="findRep()">Submit</button>
         <span id="rep_output"></span>
-        <hr>
-        <p class="zipcode">Enter your state's abbreviation to see your state's Senators.</p>
-        <input id="state_input" placeholder="Enter State (ex. PA)" type="text"></input>
+        <hr />
+        <p class="zipcode">
+            Enter your state's abbreviation to see your state's Senators.
+        </p>
+        <input
+            id="state_input"
+            placeholder="Enter State (ex. PA)"
+            type="text"
+        />
         <button id="find_senator" onclick="findSen()">Submit</button>
         <span id="sen_output"></span>
     </body>
