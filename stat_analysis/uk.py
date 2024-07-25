@@ -3,25 +3,15 @@
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
+import graphs
+import pathlib
 
 
 def turnout_graph():
     """graph for turnout in united kingdom general elections from 1918 to 2024"""
-    df = pd.read_csv(
-        "../stats/United Kingdom general election voter turnout - Sheet1.csv"
-    )
-    x_list = df["Year"].tolist()
-    y_list = list(map(lambda x: float(x[:-1]), df["Turnout"].tolist()))
-    fixed_df = pd.DataFrame({"Year": x_list, "Turnout": y_list})
-
-    sns.set_theme()
-
-    sns.lineplot(data=fixed_df, x="Year", y="Turnout")
-
-    plt.xticks(rotation=90)
-    plt.tight_layout()
-    plt.savefig("uk_turnout_graph.png")
-    plt.close()
+    in_path = pathlib.Path("../stats/United Kingdom general election voter turnout - Sheet1.csv")
+    out_path = pathlib.Path("uk_turnout_graph.png")
+    graphs.turnout_graph(in_path, out_path)
 
 
 def votes_per_mp(election_df: pd.DataFrame) -> pd.DataFrame:
@@ -69,6 +59,18 @@ def twenty_twenty_four_graph():
     plt.close()
 
 
+def uk_vs_germany():
+    """graph comparing general election turnout in the united kingdom to federal election turnout in germany"""
+    first_path = pathlib.Path("../stats/United Kingdom general election voter turnout - Sheet1.csv")
+    first_country = "United Kingdom"
+    second_path = pathlib.Path("../stats/Germany voter turnout - Sheet1.csv")
+    second_country = "Germany"
+    out_path = pathlib.Path("uk_vs_germany_turnout.png")
+
+    graphs.vs_graph(first_path, first_country, second_path, second_country, out_path)
+
+
 turnout_graph()
 twenty_fifteen_graph()
 twenty_twenty_four_graph()
+uk_vs_germany()

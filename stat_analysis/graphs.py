@@ -8,7 +8,7 @@ import seaborn as sns
 
 def read_and_fix_percentages(in_path: pathlib.Path) -> pd.DataFrame:
     """reads the given csv and removes percentage signs allowing conversions to floats and
-     therefore graphing"""
+    therefore graphing"""
     df = pd.read_csv(in_path)
     x_list = df["Year"].tolist()
     y_list = list(map(lambda x: float(x[:-1]), df["Turnout"].tolist()))
