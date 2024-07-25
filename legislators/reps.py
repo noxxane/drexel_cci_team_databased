@@ -60,7 +60,7 @@ def fix_no_leading_zero_zips(zip_list: list[str]):
 def filter_df(
     zip_df: pd.DataFrame, filter_column: str, filter_var: str
 ) -> pd.DataFrame:
-    """filters a df fuck if i know"""
+    """filters a df"""
     return pd.DataFrame(zip_df[zip_df[filter_column] == filter_var])
 
 
